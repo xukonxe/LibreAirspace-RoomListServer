@@ -1,4 +1,4 @@
-﻿using System;//Action
+using System;//Action
 using System.Collections;
 using System.Collections.Generic;//List
 using System.ComponentModel.DataAnnotations;
