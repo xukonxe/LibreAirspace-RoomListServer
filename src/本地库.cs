@@ -16,6 +16,7 @@ using MySql.Data.MySqlClient;
 using static CMKZ.LocalStorage;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Threading;
 
 namespace CMKZ {
     public static partial class 挂机争霸服务器 {

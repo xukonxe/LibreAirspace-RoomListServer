@@ -2,8 +2,10 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 
 namespace CMKZ {
     public class 主键Attribute : Attribute { }
@@ -223,7 +225,7 @@ namespace CMKZ {
         }
 
         private static readonly ConcurrentDictionary<Type, ConcurrentQueue<object>> _queues = new();
-        private static readonly Timer _timer = new(ProcessQueues, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+        private static readonly Timer _timer = new Timer(ProcessQueues, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
         public static void SQLWriteAll() => ProcessQueues(null);
         private static void ProcessQueues(object state) {
             foreach (var i in _queues) {
