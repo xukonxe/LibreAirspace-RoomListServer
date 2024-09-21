@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace TGZG.战雷革命房间服务器 {

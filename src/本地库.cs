@@ -16,6 +16,7 @@ using MySql.Data.MySqlClient;
 using static CMKZ.LocalStorage;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Threading;
 
 namespace TGZG.战雷革命房间服务器 {
     public static partial class 公共空间 {
