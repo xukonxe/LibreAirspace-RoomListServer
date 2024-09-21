@@ -22,24 +22,24 @@ namespace CMKZ {
             }
             return A[Random(0, A.Count)];
         }
-        public static T First<T>(this IEnumerable<T> X) {
-            foreach (var i in X) {
-                return i;
-            }
-            PrintWarning("注意：正在对空集First");
-            return default;
-            //throw new Exception("错误：空集不允许First");
-        }
-        public static T Find<T>(this IEnumerable<T> X, Func<T, bool> Y) {
-            foreach (var i in X) {
-                if (Y(i)) {
-                    return i;
-                }
-            }
-            if (!X.Any())  PrintWarning("注意：正在对空集Find"); 
-            return default;
-            //throw new Exception($"错误：找不到指定目标。目前集合：{X.JsonSerialize()}");
-        }
+        //public static T First<T>(this IEnumerable<T> X) {
+        //    foreach (var i in X) {
+        //        return i;
+        //    }
+        //    PrintWarning("注意：正在对空集First");
+        //    return default;
+        //    //throw new Exception("错误：空集不允许First");
+        //}
+        //public static T Find<T>(this IEnumerable<T> X, Func<T, bool> Y) {
+        //    foreach (var i in X) {
+        //        if (Y(i)) {
+        //            return i;
+        //        }
+        //    }
+        //    if (!X.Any())  PrintWarning("注意：正在对空集Find"); 
+        //    return default;
+        //    //throw new Exception($"错误：找不到指定目标。目前集合：{X.JsonSerialize()}");
+        //}
         public static int FindIndex<T>(this IEnumerable<T> X, Func<T, bool> Y) {
             var A = 0;
             foreach (var i in X) {

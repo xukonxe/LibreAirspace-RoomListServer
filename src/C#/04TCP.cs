@@ -89,7 +89,16 @@ namespace CMKZ {
             Server.Received = (client, byteBlock, requestInfo) => {
                 OnReceive?.Invoke(byteBlock.ToString(), client);
                 var A = byteBlock.ToString().JsonToCS<Dictionary<string, string>>(false);
-                var B = OnRead[A["标题"]](A, client);
+                Dictionary<string, string> B = null;
+                try {
+                    B = OnRead[A["标题"]](A, client);
+                } catch (Exception ex) {
+                    //输出红色错误信息
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"处理消息[\"{A["标题"]}\"]时遇到错误：" + ex.Message);
+                    Console.ResetColor();
+                }
+
                 if (B != null) {
                     B["_ID"] = A["_ID"];
                     client.Send(B.ToJson(false));//返回消息

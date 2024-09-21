@@ -17,8 +17,8 @@ using static CMKZ.LocalStorage;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace CMKZ {
-    public static partial class 挂机争霸服务器 {
+namespace TGZG.战雷革命房间服务器 {
+    public static partial class 公共空间 {
         /// <summary>
         /// 每n秒执行一次,精度15毫秒
         /// </summary>
@@ -44,6 +44,23 @@ namespace CMKZ {
         /// </summary>
         public static void 每_秒(this int i, Action X) {
             ((double)i).每_秒(X);
+        }
+
+        public static void Log(this object 消息) {
+            消息.log();
+        }
+        public static void log(this object 消息) {
+            Console.WriteLine(消息);
+        }
+        public static void logwarring(this object 消息) {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(消息);
+            Console.ResetColor();
+        }
+        public static void logerror(this object 消息) {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(消息);
+            Console.ResetColor();
         }
     }
 }

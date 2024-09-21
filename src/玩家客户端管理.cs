@@ -65,7 +65,7 @@ namespace TGZG.战雷革命房间服务器 {
                         _ => new() { { "验证失败", "未知错误" } }
                     };
                 lock (数据库) {
-                    数据库.玩家档案.Add(new(账户名, 密码));
+                    数据库.玩家档案.Add(new 玩家档案() { 账号名 = 账户名, 密码 = 密码 });
                     数据库.SaveChanges();
                 }
                 bool 保存 = 数据库.玩家档案.Any(p => p.账号名 == 账户名);
@@ -77,10 +77,11 @@ namespace TGZG.战雷革命房间服务器 {
             服务器.OnRead["登录"] = (t, c) => {
                 var 账户名 = t["账号"];
                 var 密码 = t["密码"];
-                var 验证 = 数据库.玩家档案.FirstOrDefault(p => p.账号名 == 账户名 && p.密码 == 密码);
+                bool 验证 = 数据库.玩家档案
+                    .AsNoTracking()
+                    .Any(p => p.账号名 == 账户名 && p.密码 == 密码);
                 //验证失败返回对应消息
-                if (验证 is null)
-                    return new() { { "验证失败", "账号或密码错误" } };
+                if (!验证) return new() { { "验证失败", "账号或密码错误" } };
                 在线玩家[c] = 账户名;
                 return new() { { "状态", "登录成功" } };
             };
@@ -99,7 +100,9 @@ namespace TGZG.战雷革命房间服务器 {
             optionsBuilder.UseMySql(连接数据, ServerVersion.AutoDetect(连接数据));
         }
         public bool 验证重名(string 账户名) {
-            return 玩家档案.Any(p => p.账号名 == 账户名);
+            return 玩家档案
+                    .AsNoTracking()
+                    .Any(p => p.账号名 == 账户名);
         }
         public 注册验证状态 注册检测(string 账户名, string 密码) {
             if (验证重名(账户名)) {
@@ -125,6 +128,8 @@ namespace TGZG.战雷革命房间服务器 {
         账户名有敏感字,
     }
     public class 玩家档案 {
+        [Key]
+        public int _ { get; set; }
         public string 账号名 { get; set; }
         public string 密码 { get; set; }
 
@@ -137,10 +142,5 @@ namespace TGZG.战雷革命房间服务器 {
         public long 消息发送总数 { get; set; }
         public long 射出子弹总数 { get; set; }
         public long 子弹命中次数 { get; set; }
-
-        public 玩家档案(string 账户名, string 密码) {
-            this.账号名 = 账户名;
-            this.密码 = 密码;
-        }
     }
 }
