@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
 namespace TGZG.战雷革命房间服务器 {
-    public static partial class 公共空间 {
+	public static partial class 公共空间 {
        
     }
     public struct 所有房间数据类 {
