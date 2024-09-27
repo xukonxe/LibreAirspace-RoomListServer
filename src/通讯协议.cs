@@ -28,6 +28,7 @@ namespace TGZG.战雷革命房间服务器 {
         public int 每秒同步次数;
         public DateTime 房间创建时间;
         public 模式类型 模式;
+        public List<载具类型> 可选载具;
     }
     public class 房间参数类 {
         public string 房间名;
@@ -54,6 +55,14 @@ namespace TGZG.战雷革命房间服务器 {
                 模式 = 模式
             };
         }
+    }
+    public enum 载具类型 {
+        无,
+        m15n23,
+        f86f25,
+        f4c,
+        m21pfm,
+        P51h
     }
     public enum 模式类型 {
         休闲,
