@@ -3,7 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TGZG.战雷革命房间服务器;
 
@@ -11,12 +10,10 @@ using TGZG.战雷革命房间服务器;
 
 namespace 战雷革命房间列表服务器.Migrations
 {
-    [DbContext(typeof(自由空域数据库))]
-    [Migration("20240921040729_24.9.21")]
-    partial class _24921
+    [DbContext(typeof(自由空域数据库_MySql))]
+    partial class 自由空域数据库_MySqlModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +40,6 @@ namespace 战雷革命房间列表服务器.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("密码")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<long>("射出子弹总数")
@@ -65,7 +61,6 @@ namespace 战雷革命房间列表服务器.Migrations
                         .HasColumnType("time(6)");
 
                     b.Property<string>("账号名")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("_");

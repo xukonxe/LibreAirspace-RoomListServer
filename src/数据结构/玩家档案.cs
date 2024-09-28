@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 namespace TGZG.战雷革命房间服务器 {
 	public class 玩家档案 {
 		//TKTek: 这个是句柄吗？
+        //沈伊利: 对，用作数据库内存储档案的唯一标识符。
+        //EFCore强制要求的主键
         [Key]
         public int _ { get; set; }
         public string 账号名 { get; set; }

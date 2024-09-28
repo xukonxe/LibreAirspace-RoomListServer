@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TGZG.战雷革命房间服务器 {
 	public struct 房间数据类 {
@@ -12,7 +13,9 @@ namespace TGZG.战雷革命房间服务器 {
         public string 房间版本;
         public int 每秒同步次数;
         public DateTime 房间创建时间;
-        public 模式类型 模式;
 		public ModInfo[] 模组列表;
-	}
+        public 模式类型 模式;
+        public List<载具类型> 可选载具;
+        public List<队伍> 可选队伍;
+    }
 }

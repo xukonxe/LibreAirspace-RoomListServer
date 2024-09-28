@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace 战雷革命房间列表服务器.Migrations
 {
     /// <inheritdoc />
-    public partial class _24921 : Migration
+    public partial class _2024928沈伊利本机测试1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,9 +21,9 @@ namespace 战雷革命房间列表服务器.Migrations
                 {
                     _ = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    账号名 = table.Column<string>(type: "longtext", nullable: false)
+                    账号名 = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    密码 = table.Column<string>(type: "longtext", nullable: false)
+                    密码 = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     击杀数 = table.Column<int>(type: "int", nullable: false),
                     死亡数 = table.Column<int>(type: "int", nullable: false),

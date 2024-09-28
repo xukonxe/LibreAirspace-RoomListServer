@@ -29,7 +29,7 @@ namespace TGZG.战雷革命房间服务器 {
     }
     public static partial class 玩家客户端管理信道 {
         public static int 端口 => 16313;
-        public static TcpServer 服务器 = new(16313, 版本);
+        public static TcpServer 服务器 = new(16313, 客户端版本);
         public static void 启动() {
             服务器.OnConnect += c => {
                 Print($"用户 {c.IP} 连接");
@@ -38,8 +38,12 @@ namespace TGZG.战雷革命房间服务器 {
                 //Print($"用户 {c.IP} 发来消息：{t}");
             };
             服务器.OnDisconnect += c => {
-                Print($"用户 {在线玩家[c]}({c.IP}) 断开连接");
-                在线玩家.Remove(c);
+                if (在线玩家.ContainsKey(c)) {
+                    Print($"用户 {在线玩家[c]}({c.IP}) 断开连接");
+                    在线玩家.Remove(c);
+                } else {
+                    Print($"未登录用户 {c.IP} 断开连接");
+                }
             };
             服务器.OnRead["测试信息"] = (t, c) => {
                 return new() { { "返回", $"您发来的消息是 {t["内容"]}" } };
