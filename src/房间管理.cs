@@ -51,6 +51,18 @@ namespace TGZG.战雷革命房间服务器 {
                 Print($"房间 {房间.房间名} 已注册");
                 return new() { { "成功", "注册成功" } };
             };
+            服务器.OnRead["验证登录"] = (t, c) => {
+                var 账号 = t["账号"];
+                var 密码 = t["密码"];
+                bool 验证 = 数据库.玩家档案
+                   .AsNoTracking()
+                   .Any(p => p.账号名 == 账号 && p.密码 == 密码);
+                if (!验证)
+                    return new() { { "验证失败", "账号或密码错误" } };
+                if (!在线玩家.ContainsValue(账号))
+                    return new() { { "失败", "此玩家不在线" } };
+                return new() { { "成功", "登录验证成功" } };
+            };
             服务器.OnRead["房间数据更新"] = (t, c) => {
                 var 数据 = t["数据"].JsonToCS<房间参数类>();
                 if (!房间列表.Exists(x => x.房间名 == 数据.房间名)) {
