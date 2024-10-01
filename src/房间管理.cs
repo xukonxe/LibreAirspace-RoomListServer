@@ -77,6 +77,18 @@ namespace TGZG.战雷革命房间服务器 {
                 }
                 return new() { { "成功", "" } };
             };
+            服务器.OnRead["玩家数据上传"] = (t, c) => {
+                var 账户名 = t["账号"];
+                var 玩家数据 = t["数据"].JsonToCS<玩家计分数据>();
+                var 玩家档案 = 数据库.玩家档案.FirstOrDefault(p => p.账号名 == 账户名);
+                if (玩家档案 != null) {
+                    lock (玩家档案) {
+                        玩家数据.档案更新(玩家档案);
+                        数据库.SaveChanges();
+                    }
+                }
+                return null;
+            };
             服务器.Start();
             Print($"房间管理信道已在端口{端口}上启动");
             //10.每_秒(() => {
