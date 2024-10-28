@@ -111,16 +111,6 @@ namespace TGZG.战雷革命房间服务器 {
 		public void 启动() {
             base.Start();
             Print($"房间管理信道已在端口{端口}上启动");
-            //10.每_秒(() => {
-            //    //每十秒发送心跳询问
-            //    foreach (var 房间 in 房间列表) {
-            //        Task.Run(async () => {
-            //            服务器.SendAsync(房间.IP, new() {
-            //                { "标题", "心跳询问" }
-            //            });
-            //        });
-            //    }
-            //});
         }
         public void 注销(房间数据类 数据) {
             房间列表.Remove(数据);
