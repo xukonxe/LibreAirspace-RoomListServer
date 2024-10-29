@@ -1,29 +1,14 @@
-using System;//Action
-using System.Collections;
 using System.Collections.Generic;//List
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics;
-using System.IO;//File
 using System.Linq;//from XX select XX
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Timers;//Timer
 using CMKZ;
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
+using TGZG.Net;
 using static CMKZ.LocalStorage;
 using static TGZG.战雷革命房间服务器.公共空间;
 using PktTypTab = TGZG.战雷革命房间服务器.CommunicateConstant.PacketType;
 
 namespace TGZG.战雷革命房间服务器 {
-    public class 房间管理信道 : TcpServer {
+	public class 房间管理信道 : TcpServer {
         public static int 端口 => 16312;
         //public static TcpServer 服务器 = new(16312, 版本);
 

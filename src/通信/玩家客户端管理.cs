@@ -1,29 +1,14 @@
-using System;//Action
-using System.Collections;
 using System.Collections.Generic;//List
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics;
-using System.IO;//File
 using System.Linq;//from XX select XX
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Timers;//Timer
 using CMKZ;
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
+using TGZG.Net;
 using static CMKZ.LocalStorage;
 using static TGZG.战雷革命房间服务器.公共空间;
 using PktTypTab = TGZG.战雷革命房间服务器.CommunicateConstant.PacketType;
 
 namespace TGZG.战雷革命房间服务器 {
-    public static partial class 公共空间 {
+	public static partial class 公共空间 {
         public static bool 敏感字检查(this string 内容) {
             return false;
         }

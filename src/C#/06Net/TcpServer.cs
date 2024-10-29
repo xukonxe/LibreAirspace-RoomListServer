@@ -5,11 +5,12 @@ using TouchSocket.Sockets;
 using System.Linq;
 using TGZG.战雷革命房间服务器;
 using PktTypTab = TGZG.战雷革命房间服务器.CommunicateConstant.PacketType;
+using CMKZ;
 
-namespace CMKZ {
+namespace TGZG.Net {
 	public class TcpServer {
         public int Port;
-		protected 数据包处理器注册表_Tcp m_PacketHandlerRegistry = new();
+		protected 数据包处理器注册表_Tcp服务器 m_PacketHandlerRegistry = new();
 		protected HashSet<string> m_CachedPacketTypeList = null;
 		public Action<string, SocketClient> OnReceive;
         public Action<SocketClient> OnConnect;
@@ -59,9 +60,10 @@ namespace CMKZ {
                 .SetDataHandlingAdapter(() => new FixedHeaderPackageAdapter() { FixedHeaderType = FixedHeaderType.Int }))
             .Start();
         }
+
 		/// <summary>
-		 /// 仅在初始化类时调用此方法。
-		 /// </summary>
+		/// 仅在初始化类时调用此方法。
+		/// </summary>
 		protected virtual void RegisterPacketHandler() {
 			this.m_CachedPacketTypeList = new HashSet<string>(this.m_PacketHandlerRegistry.GetAllRegisteredPacketType());
 			this.m_PacketHandlerRegistry.OnPacketTypeRegistryUpdated += delegate {
